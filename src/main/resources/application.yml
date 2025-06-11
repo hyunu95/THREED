@@ -8,7 +8,7 @@ spring:
     password: 1234
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
     show-sql: true
     properties:
       hibernate:
@@ -16,7 +16,7 @@ spring:
 
 security:
   cors:
-    allowed-origins: http://localhost:3000
+    allowed-origins: http://localhost:[*]
 
 springdoc:
   default-consumes-media-type: application/json;charset=UTF-8
@@ -27,3 +27,9 @@ springdoc:
     disable-swagger-default-url: true
     display-request-duration: true
     operations-sorter: alpha
+
+auth:
+  access-key: secretsecretsecretsecretsecretsecretsecretsecret
+  refresh-key: secretsecretsecretsecretsecretsecretsecretsecret
+  access-expiration: 7200000 # 2 hours
+  refresh-expiration: 2419200000 # 28 days
