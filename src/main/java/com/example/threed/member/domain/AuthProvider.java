@@ -20,4 +20,8 @@ public class AuthProvider {
 	@Column(nullable = false)
 	private String providerId;
 
+	public AuthProvider(ProviderType providerType, String providerId) {
+		this.providerType = providerType;
+		this.providerId = providerId;
+	}
 }
