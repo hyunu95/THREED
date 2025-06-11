@@ -1,15 +1,20 @@
 package com.example.threed.auth.dto.userinfo;
 
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
-@AllArgsConstructor
+@NoArgsConstructor
 public class GoogleUserInfo implements OAuthUserInfo {
 	private String id;
 	private String email;
-	private String nickname;
-	private String profileImageUrl;
+
+	@JsonProperty("name")
+	private String name;
+
+	@JsonProperty("picture")
+	private String picture;
 
 	@Override
 	public String getProviderId() {
@@ -21,10 +26,10 @@ public class GoogleUserInfo implements OAuthUserInfo {
 	}
 	@Override
 	public String getNickname() {
-		return nickname;
+		return name;
 	}
 	@Override
 	public String getProfileImageUrl() {
-		return profileImageUrl;
+		return picture;
 	}
 }
