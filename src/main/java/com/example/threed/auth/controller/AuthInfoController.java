@@ -20,11 +20,21 @@ public class AuthInfoController {
 
 	// 엑세스토큰으로 내 정보 조회
 	@GetMapping("/me")
-	public ResponseEntity<UserResponse> me(@RequestHeader("Authorization") String authorization) {
-		String token = authorization.replace("Bearer ", "");
-		Member member = authService.parseAccessToken(token); // 이미 구현되어 있던 토큰 파싱 사용
-		return ResponseEntity.ok(new UserResponse(member));
+	public ResponseEntity<UserResponse> me(
+		@RequestHeader(value = "Authorization", required = false) String authorization) {
+		if (authorization == null || authorization.isBlank()) {
+			return ResponseEntity.status(401).build();
+		}
+		String token = authorization.replace("Bearer ", "").trim();
+		try {
+			Member member = authService.parseAccessToken(token);
+			return ResponseEntity.ok(new UserResponse(member));
+		} catch (Exception e) {
+			System.out.println("Invalid access token: " + e.getMessage());
+			return ResponseEntity.status(401).body(null);
+		}
 	}
+
 
 	// 리프레시토큰으로 엑세스토큰 재발급
 	@PostMapping("/refresh")
