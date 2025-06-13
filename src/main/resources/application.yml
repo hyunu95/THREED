@@ -40,11 +40,18 @@ oauth:
     client-secret: client-secret
     redirect-uri: http://localhost:3000/oauth/google/callback
 
-  kakao:
-    client-id: client-id
-    redirect-uri: http://localhost:3000/oauth/kakao/callback
+#  kakao:
+#    client-id: client-id
+#    redirect-uri: http://localhost:3000/oauth/kakao/callback
+#
+#  github:
+#    client-id: client-id
+#    client-secret: client-secret
+#    redirect-uri: http://localhost:3000/oauth/github/callback
 
-  github:
-    client-id: client-id
-    client-secret: client-secret
-    redirect-uri: http://localhost:3000/oauth/github/callback
+aws:
+  s3:
+    bucket-name: threed-blog-dev
+    region: eu-north-1
+    access-key: access-key
+    secret-key: secret-key
